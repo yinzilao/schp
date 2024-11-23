@@ -16,18 +16,18 @@ import cv2
 import numpy as np
 
 from torch.utils import data
-from utils.transforms import get_affine_transform
+from schp.utils.transforms import get_affine_transform
 
 
 class SimpleFolderDataset(data.Dataset):
-    def __init__(self, root, input_size=[512, 512], transform=None):
+    def __init__(self, root, input_size=[512, 512], transform=None, file_list=None):
         self.root = root
         self.input_size = input_size
         self.transform = transform
         self.aspect_ratio = input_size[1] * 1.0 / input_size[0]
         self.input_size = np.asarray(input_size)
 
-        self.file_list = os.listdir(self.root)
+        self.file_list = file_list if file_list is not None else os.listdir(self.root)
 
     def __len__(self):
         return len(self.file_list)

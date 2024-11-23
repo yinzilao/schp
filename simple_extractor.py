@@ -18,12 +18,13 @@ import numpy as np
 from PIL import Image
 from tqdm import tqdm
 
+
 from torch.utils.data import DataLoader
 import torchvision.transforms as transforms
 
-import networks
-from utils.transforms import transform_logits
-from datasets.simple_extractor_dataset import SimpleFolderDataset
+import schp.networks as networks
+from schp.utils.transforms import transform_logits
+from schp.datasets.simple_extractor_dataset import SimpleFolderDataset
 
 dataset_settings = {
     'lip': {
